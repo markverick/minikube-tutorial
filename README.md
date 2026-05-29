@@ -12,6 +12,30 @@ You will:
 
 The demo app is a tiny Python HTTP server that returns JSON.
 
+## Project Files
+
+```text
+.
+├── app
+│   ├── Dockerfile
+│   └── server.py
+├── k8s
+│   ├── deployment.yaml
+│   ├── kustomization.yaml
+│   └── service.yaml
+├── Makefile
+└── README.md
+```
+
+- `app/server.py` is the demo web app.
+- `app/Dockerfile` builds the app into a container image.
+- `k8s/deployment.yaml` tells Kubernetes how to run the app container.
+- `k8s/service.yaml` gives the app a stable Kubernetes Service name.
+- `k8s/kustomization.yaml` lets `kubectl apply -k k8s` apply all Kubernetes files
+  together.
+- `Makefile` contains optional shortcuts for common commands.
+- `README.md` is this guide.
+
 ## Install the Tools
 
 You need three command-line tools:
