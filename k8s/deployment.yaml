@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: minikube-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: minikube-demo
+  template:
+    metadata:
+      labels:
+        app: minikube-demo
+    spec:
+      containers:
+        - name: app
+          image: minikube-demo:1.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8080
